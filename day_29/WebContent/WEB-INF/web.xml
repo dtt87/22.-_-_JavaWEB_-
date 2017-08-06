@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	
+	<!-- 配置当前 WEB 应用的初始化参数 -->
+	<context-param>
+		<param-name>driver</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>jdbcUrl</param-name>
+		<param-value>jdbc:mysql:///atguigu</param-value>
+	</context-param>
+
+	<!-- 配置和映射 Servlet -->
+	<servlet>
+		<!-- Servlet 注册的名字 -->
+		<servlet-name>helloServlet</servlet-name>
+		<!-- Servlet 的全类名 -->
+		<servlet-class>com.atguigu.javaweb.HelloServlet</servlet-class>
+		
+		<!-- 配置 Serlvet 的初始化参数 -->
+		<init-param>
+			<!-- 参数名 -->
+			<param-name>user</param-name>
+			<!-- 参数值 -->
+			<param-value>root</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>1230</param-value>
+		</init-param>
+		
+		<!-- 可以指定 Servlet 被创建的时机 -->
+		<load-on-startup>-1</load-on-startup>
+		
+	</servlet>
+	
+	<servlet-mapping>
+		<!-- 需要和某一个 servlet 节点的 serlvet-name 子节点的文本节点一致 -->
+		<servlet-name>helloServlet</servlet-name>
+		<!-- 映射具体的访问路径: / 代表当前 WEB 应用的根目录. -->
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<!-- 需要和某一个 servlet 节点的 serlvet-name 子节点的文本节点一致 -->
+		<servlet-name>helloServlet</servlet-name>
+		<!-- 映射具体的访问路径: / 代表当前 WEB 应用的根目录. -->
+		<url-pattern>/hello2</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<!-- Servlet 注册的名字 -->
+		<servlet-name>secondServlet</servlet-name>
+		<!-- Servlet 的全类名 -->
+		<servlet-class>com.atguigu.javaweb.SecondServlet</servlet-class>
+		<!-- 可以指定 Servlet 被创建的时机 -->
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<!--  
+	<servlet-mapping>
+		<servlet-name>secondServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	-->
+	
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class> com.test.LoginServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/loginServlet</url-pattern>	
+	</servlet-mapping>
+	
+</web-app>
